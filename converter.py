@@ -1,0 +1,39 @@
+#importy
+import json 
+import xml.etree.cElementTree as ET
+import yaml
+import xmltodict
+from yaml import SafeLoader
+import os.path
+plik_json = "przyklad.json"
+plik_xml = "przyklad.xml"
+plik_yaml = "przyklad.yaml"
+file_type = ["json","xml","yaml"]
+i = 0
+while i != 7:
+    print("""
+    1 - konwersje json na xml
+    2 - konwersje json na yaml
+    3 - konwersja xml na json
+    4 - konwersja xml na yaml
+    5 - konwersja yaml na json
+    6 - konwersja yaml na xml
+    7 - zakonczenie programu
+    """)
+
+    i = int(input("Wybierz opcje"))
+
+    if (i == 1 & os.path.isfile(plik_json) ):
+    #json na xml
+        with open(plik_json, "r") as json_file:
+                data = json.load(json_file)
+                with open(input(f'podaj nazwe nowego pliku '), "w") as  xml_file:
+                    xmltodict.unparse(data, output=xml_file)
+                    xml_file.close()
+    elif (i == 2 & os.path.isfile(plik_json)):
+    #json na yaml
+        with open(plik_json, "r") as json_file:
+            data = json.load(json_file)
+            with open(input("podaj nazwe nowego pliku "), "w") as yaml_file:
+                yaml.dump(data, yaml_file)
+                yaml_file.close()
