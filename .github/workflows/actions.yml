@@ -20,9 +20,9 @@ jobs:
           ./installResources.ps1
       - name: Build executable
         run: |
-          pyinstaller --onefile main.py
+          pyinstaller --onefile converter.py
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: my-executable
-          path: dist/main.exe
+          path: dist/converter.exe
